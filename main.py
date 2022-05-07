@@ -1,1 +1,7 @@
-print('hello')
+import turtle
+
+window = turtle.Screen()
+
+
+
+window.mainloop()
