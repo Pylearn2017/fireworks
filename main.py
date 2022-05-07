@@ -1,4 +1,5 @@
 import turtle
+import random
 
 def fire(x,y):
     angle = 0
@@ -6,20 +7,25 @@ def fire(x,y):
         hero.setposition(x,y)
     for hero in heroes_list:
         hero.setheading(angle)
-        angle += 40
-    for i in range(50):
+        angle += 40 + random.randint(-10, 10)
+    size = random.randint(30, 50)
+    for i in range(size):
         for hero in heroes_list:
-            hero.forward(10)
+            step = random.randint(1, 10)
+            hero.forward(step)
 
 window = turtle.Screen()
 window.bgcolor('#000000')
 
 heroes_list = []
-for i in range(9):
+num_balls = random.randint(9, 19)
+for i in range(num_balls):
     hero = turtle.Turtle()
     hero.shape('circle')
+    hero.shapesize(0.5)
     hero.color('#ffffff')
     hero.penup()
+    hero.speed(0)
     heroes_list.append(hero)
 
 
