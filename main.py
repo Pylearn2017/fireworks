@@ -3,7 +3,7 @@ import turtle
 window = turtle.Screen()
 window.bgcolor('#000000')
 
-hero = tuple.Turtle()
+hero = turtle.Turtle()
 hero.shape('circle')
 hero.color('#ffffff')
 
