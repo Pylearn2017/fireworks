@@ -13,9 +13,12 @@ def fire(x,y):
         for hero in heroes_list:
             step = random.randint(0, 2)
             hero.forward(step)
+            window.update()
+        
 
 window = turtle.Screen()
 window.bgcolor('#000000')
+window.tracer(0)
 
 heroes_list = []
 num_balls = random.randint(9, 19)
@@ -31,7 +34,6 @@ for i in range(num_balls):
     hero.penup()
     hero.speed(0)
     heroes_list.append(hero)
-
 
 window.onclick(fire)
 window.mainloop()
