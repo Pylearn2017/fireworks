@@ -1,13 +1,15 @@
 import turtle
 import random
 
-def crate_heroes():
+def crete_heroes(x,y):
+    angle = 0
     heroes_list = []
     num_balls = random.randint(9, 19)
     for i in range(num_balls):
         hero = turtle.Turtle()
         hero.shape('circle')
         hero.shapesize(0.3)
+        hero.setposition(x,y)
         random_color = (random.random(), 
                     random.random(),
                     random.random()
@@ -15,26 +17,24 @@ def crate_heroes():
         hero.color(random_color)
         hero.penup()
         hero.speed(0)
+        hero.setheading(angle)
+        angle += random.randint(-10, 10)
+        hero.line = 100
         heroes_list.append(hero)
     return heroes_list
 
 def fire(x,y):
-    angle = 0
-    heroes_list = crate_heroes()
-    for hero in heroes_list:
-        hero.setposition(x,y)
-    for hero in heroes_list:
-        hero.setheading(angle)
-        angle += 40 + random.randint(-10, 10)
-    size = random.randint(30, 70)
-    for i in range(size):
-        for hero in heroes_list:
+    crete_heroes(x,y)
+    for i in range(100):
+        for hero in window.turtles():
             step = random.randint(0, 2)
             hero.forward(step)
-            window.update()
-    for hero in window.turtles():
-        hero.reset()
-        
+            hero.line -= 1
+            if not hero.line:
+                hero.reset()
+        window.update()
+
+
 window = turtle.Screen()
 window.bgcolor('#000000')
 window.tracer(0)
