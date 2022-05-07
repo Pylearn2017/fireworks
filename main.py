@@ -17,14 +17,14 @@ def crete_heroes(x,y):
         hero.color(random_color)
         hero.penup()
         hero.speed(0)
+        angle += 360/num_balls
         hero.setheading(angle)
-        angle += random.randint(-10, 10)
         hero.line = 100
         heroes_list.append(hero)
     return heroes_list
 
 def fire(x,y):
-    crete_heroes(x,y)
+    heroes_list = crete_heroes(x,y)
     for i in range(100):
         for hero in window.turtles():
             step = random.randint(0, 2)
@@ -32,6 +32,7 @@ def fire(x,y):
             hero.line -= 1
             if not hero.line:
                 hero.reset()
+                
         window.update()
 
 
